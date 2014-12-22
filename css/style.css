@@ -1,0 +1,41 @@
+/* Snow effect taken from http://designshack.net/tutorialexamples/letitsnow/index.html */
+@keyframes snow {
+ 0% {background-position: 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+ 
+@-moz-keyframes snow {
+ 0% {background-position: 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+ 
+@-webkit-keyframes snow {
+0% {background-position: 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+ 
+@-ms-keyframes snow {
+ 0% {background-position: 0px 0px;}
+ 100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+
+body {
+    background-color: #eee; 
+    background-image: url('../image/snow.png'), url('../image/snow2.png'), url('../image/snow3.png');
+     
+    -webkit-animation: snow 20s linear infinite;
+    -moz-animation: snow 20s linear infinite;
+    -ms-animation: snow 20s linear infinite;
+    animation: snow 20s linear infinite;
+
+}
+
+h1 {
+	text-align: center;
+	margin: 100px 0 40px 0;
+}
+
+h1 small {
+	display: block;
+	font-size: 0.5em;
+}

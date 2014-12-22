@@ -31,12 +31,90 @@ body {
 }
 
 h1 {
+    margin: 60px 0 40px 0;
 	text-align: center;
-	margin: 100px 0 40px 0;
-    font-size: 7rem;
+        font-size: 5rem;
 }
+
+.open-message h2 {
+    margin:  10px;
+}
+
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 500px) {
+    h1 {
+        font-size: 7rem;
+    }
+
+    .open-message p{
+        font-size: 1.2em;
+    }
+
+}
+
 
 h1 small {
 	display: block;
 	font-size: 0.5em;
 }
+
+.coupon {
+    font-size: 20px;
+    /*border-radius: 0 3px 3px 0;*/
+    border-radius: 2px;
+    height: 60px;
+    width: 150px;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    backface-visibility: hidden;
+    transform: rotateY(180deg); 
+    transform-style: preserve-3d;
+}
+
+.coupon .coupon-back,
+.coupon .coupon-front {
+    position: absolute;
+    width: 100%;
+    line-height: 22px;
+    padding: 6px 0;
+    display: block;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    background: #fff;
+    border: 2px dashed #AEAEAE;
+    box-sizing: border-box;
+}
+
+.coupon .coupon-back {
+    line-height: 44px;
+    font-size: 30px;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+
+}
+/*
+.coupon:before,
+.coupon:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #fff;
+    transform: rotate(-45deg);
+    width: 21px;
+    height: 6px;
+    top: 0;
+    right: 100%;
+    transform-origin: top right;
+    border-radius: 3px 0 0 0;
+}
+
+.coupon:after {
+    transform: rotate(45deg);
+    top: auto;
+    bottom: 0;
+    right: 100%;
+    transform-origin: bottom right;
+    border-radius: 0 0 0 3px;
+}*/

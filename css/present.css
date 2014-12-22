@@ -1,161 +1,151 @@
-
-.present-box {
-	width: 160px;
-	height: 160px;
-	margin: 20px auto;
-	background: rgba(0, 0, 0, 0.04);
+.cube-wrapper {
+	width: 200px;
+	height: 200px;
 	position: relative;
+	margin: 140px auto 60px auto;
+	perspective: 1000px;
 }
 
-.present-box,
-.present-box * {
+.cube {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transform: translateZ( -200px ) rotateZ(0) rotateX(-20deg) rotateY(45deg) translateX(-40px) translateY(-120px);
+
+}
+
+.cube figure, .fake-cube-top {
+	width: 196px;
+	height: 196px;
+	display: block;
+	position: absolute;
+	border: 2px solid #3E2723;
+	top: 0;
+	left:0;
+
+	line-height: 196px;
+	font-size: 120px;
+	text-align: center;
 	transform-style: preserve-3d;
 }
 
-.present-box .side,
-.present-box .side span {
-	content: "";
-	display: block;
-	width: 50%;
-	height: 100%;
-	top: 0;
+.cube .front    { transform: rotateY(   0deg ) translateZ(100px); background: #795548; }
+.cube .back     { transform: rotateX( 180deg ) translateZ(100px); background: #5D4037; }
+.cube .right    { transform: rotateY(  90deg ) translateZ(100px); background: #4E342E;  }
+.cube .left     { transform: rotateY( -90deg ) translateZ(100px); background: #8D6E63; }
+.cube .top     { transform: rotateX(  90deg ) translateZ(100px); }
+.cube .shadow   { transform: rotateX( -90deg ) translateZ(100px) translateX(0); width: 355px; background: rgba(0,0,0,0.1); border: 0; padding: 2px; }
+
+.cube .top div,
+.fake-cube-top div { 
+	width: 50%; 
+	height: 100%; 
 	position: absolute;
-}
-
-.present-box .side {
-	width: 100%;
-	height: 50%;
-}
-
-/* --- Back --- */
-.present-box .back {
-	top: 25%;
-}
-
-.present-box .back span,
-.present-box .front span {
-	left: 50%;
-	background: #5D4037;
-	-webkit-transform: skew(0, 20deg);
-}
-
-
-.present-box .back span:first-child,
-.present-box .front span:first-child {
-	background: #6D4C41;
-	left: 0;
-	-webkit-transform: skew(0, -20deg);
-}
-
-/* --- FRONT --- */
-.present-box .front {
-	top: 43%;
-}
-
-.present-box .front span {
-	background: #8D6E63;
-	left: 0;
-}
-
-.present-box .front span:first-child {
-	left: 50%;
-	background: #795548
-}
-
-/* --- FRONT --- */
-.present-box .top {
-	top: 0;
-	-webkit-transform: translateY(-1px) rotateX(69deg) rotate(-45deg);
-	width: 112px;
-	height: 112px;
-	left: 24px;
-}
-
-.present-box .top.top-under {
-	-webkit-transform: translateY(-1px) rotateX(69deg) rotate(-134deg);
-	height: 112px;
-	width: 112px;
-}
-
-.present-box .top span {
-	background: none !important;
-	height: 101%;
-	-webkit-transform: rotateY(0);
-	transform-origin: right center;
-	transition: all 1s ease 2s;
-}
-
-.present-box .top.top-under span {
-	transition: all 1s ease 1.5s;
-}
-
-.present-box .top span:last-child {
-	left: 0;
+	
+	font-size: 60px;
 	transform-origin: left center;
+
+	border: 1px solid #3E2723;
 }
 
-.present-box:hover .top span,
-.present-box.open .top span {
-	-webkit-transform: rotateY(-180deg);
-	transition: all 1s ease 0;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+.cube .top .lower,
+.fake-cube-top .lower { 
+	height: 50%; 
+	width: 100%; 
+	line-height: 96px;
 }
 
-.present-box:hover .top.top-under span,
-.present-box.open .top.top-under span {
-	transition: all 1s ease 1s;
+.cube:hover .top .lower,
+.fake-cube-top:hover .lower { 
+	z-index: 2;
+}
+
+.cube .top div,
+.cube .shadow,
+.fake-cube-top div { 
+	transition: transform 1s ease 1s,
+				background 1s ease 1s;
 }
 
 
-.present-box .top span:before,
-.present-box .top span:after {
-	content: "";
-	display: block;
-	width: 100%;
-	height: 100%;
-	-webkit-transform: rotateY(0);
+.cube .top .lower,
+.fake-cube-top .lower { 
+	transition: transform 1s ease 0s,
+				background 1s ease 0s, 
+				z-index 0 ease 1s;
+}
+
+.cube:hover .top div,
+.cube:hover .shadow,
+.fake-cube-top:hover div { 
+	transition: transform 1s ease 0s,
+				background 1s ease 0s;
+}
+
+
+.cube:hover .top .lower,
+.fake-cube-top:hover .lower { 
+	transition: transform 1s ease 1s,
+				background 1s ease 1s, 
+				z-index 0 ease 1s;
+}
+
+
+.cube .top .upper-right,
+.fake-cube-top .upper-right { 
+	transform-origin: right center; 
+	transform: translateZ(0px) translateX(98px); 
+	background: #795548; 
+}
+
+.cube .top .lower-right,
+.fake-cube-top .lower-right { 
+	transform-origin: bottom center; 
+	transform: translateZ(-1px) translateY(98px); 
+	background: #8D6E63; 
+}
+
+.cube .top .upper-left,
+.fake-cube-top .upper-left { 
+	transform-origin: left center; 
+	transform: translateZ(0px);
+	background: #8D6E63; 
+}
+
+.cube .top .lower-left,
+.fake-cube-top .lower-left { 
+	transform-origin: top center; 
+	transform: translateZ(-1px); 
+	background: #795548; 
+}
+
+.cube:hover .top .upper-right,
+.fake-cube-top:hover .upper-right { 
+	transform: translateZ(-1px) translateX(98px) rotateY(150deg); 
+	background: #795548;
+}
+
+.cube:hover .top .lower-right,
+.fake-cube-top:hover .lower-right { 
+	transform: translateZ(-1px) translateY(98px) rotateX(-150deg); 
 	background: #A1887F;
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
-.present-box:hover .top span:before,
-.present-box:hover .top span:after
-.present-box.open .top span:before,
-.present-box.open .top span:after {
+.cube:hover .top .upper-left,
+.fake-cube-top:hover .upper-left { 
+	transform: translateZ(-1px) rotateY(-150deg);  
 	background: #A1887F;
 }
 
-.present-box .top span:after {
-	-webkit-transform: rotateY(180deg);
+.cube:hover .top .lower-left,
+.fake-cube-top:hover .lower-left { 
+	transform: translateZ(-1px) rotateX(150deg); 
+	background: #795548;
 }
 
-.present-box:hover .top span:first-child, 
-.present-box.open .top span:first-child {
-	-webkit-transform: rotateY(180deg);
+.cube:hover .shadow,
+.fake-cube-top:hover .lower-left { 
+	transform: rotateX( -90deg ) translateZ(100px) translateX(100px); 
 }
 
-.present-box .top span:first-child {
-	left: 50%;
-}
-
-/* --- FRONT --- */
-.present-box .item {
-	width: 40%;
-	height: 40%;
-	border-radius: 100%;
-	background: #03A9F4;
-	position: absolute;
-	left: 30%;
-	top: 50%%;
-	transition: all 2s ease 0;
-}
-
-.present-box:hover .item, 
-.present-box.open .item {
-	top: 0;
-	z-index: 1;
-	transition: all 2s ease 2s;
-}
